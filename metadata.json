@@ -1,0 +1,5 @@
+{
+  "name": "KIND Service Platform",
+  "description": "A multi-role service platform featuring distinct dashboards for Administrators, Service Providers, and Clients, offering management, job tracking, and booking capabilities.",
+  "requestFramePermissions": []
+}
