@@ -626,9 +626,9 @@ app.put('/api/messages/:messageId/read', async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV !== 'production' && !process.env.FUNCTION_NAME) {
+if (!process.env.FUNCTION_NAME) {
   app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
+    console.log(`Server listening on port ${PORT}`);
   });
 }
 

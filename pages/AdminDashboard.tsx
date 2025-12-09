@@ -44,7 +44,7 @@ export const AdminDashboard: React.FC = () => {
       if (!isBackground) setLoadingUsers(true);
       setUsersError(null);
       try {
-        const res = await fetch('http://localhost:4000/api/users');
+        const res = await fetch('https://kind-app-x9ef.onrender.com/api/users');
         if (!res.ok) throw new Error('Failed to fetch users');
         const data = await res.json();
         setUsers(data || []);
@@ -59,7 +59,7 @@ export const AdminDashboard: React.FC = () => {
     const fetchPendingProviders = async (isBackground = false) => {
       if (!isBackground) setLoadingPending(true);
       try {
-        const res = await fetch('http://localhost:4000/api/admin/pending-providers');
+        const res = await fetch('https://kind-app-x9ef.onrender.com/api/admin/pending-providers');
         if (res.ok) {
           const data = await res.json();
           // avoid unnecessary re-renders if data is same (deep check omitted for simplicity, relying on React)
@@ -75,7 +75,7 @@ export const AdminDashboard: React.FC = () => {
     const fetchContactRequests = async (isBackground = false) => {
       if (!isBackground) setLoadingRequests(true);
       try {
-        const res = await fetch('http://localhost:4000/api/contact-requests');
+        const res = await fetch('https://kind-app-x9ef.onrender.com/api/contact-requests');
         if (res.ok) {
           const data = await res.json();
           setContactRequests(data || []);
@@ -104,7 +104,7 @@ export const AdminDashboard: React.FC = () => {
 
   const handleProviderStatus = async (id: number | string, status: 'active' | 'rejected') => {
     try {
-      const res = await fetch(`http://localhost:4000/api/admin/providers/${id}/status`, {
+      const res = await fetch(`https://kind-app-x9ef.onrender.com/api/admin/providers/${id}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
@@ -112,13 +112,13 @@ export const AdminDashboard: React.FC = () => {
 
       if (res.ok) {
         // Refresh pending list
-        const refreshRes = await fetch('http://localhost:4000/api/admin/pending-providers');
+        const refreshRes = await fetch('https://kind-app-x9ef.onrender.com/api/admin/pending-providers');
         if (refreshRes.ok) {
           const data = await refreshRes.json();
           setPendingProviders(data || []);
         }
         // Refresh all users list
-        const usersRes = await fetch('http://localhost:4000/api/users');
+        const usersRes = await fetch('https://kind-app-x9ef.onrender.com/api/users');
         if (usersRes.ok) {
           const data = await usersRes.json();
           setUsers(data || []);
@@ -150,7 +150,7 @@ export const AdminDashboard: React.FC = () => {
                 const fetchPendingProviders = async () => {
                   setLoadingPending(true);
                   try {
-                    const res = await fetch('http://localhost:4000/api/admin/pending-providers');
+                    const res = await fetch('https://kind-app-x9ef.onrender.com/api/admin/pending-providers');
                     if (res.ok) {
                       const data = await res.json();
                       console.log('Refreshed pending providers:', data);

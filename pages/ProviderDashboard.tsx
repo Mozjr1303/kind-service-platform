@@ -84,7 +84,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
       };
 
       try {
-         const res = await fetch(`http://localhost:4000/api/messages/${req.id}`);
+         const res = await fetch(`https://kind-app-x9ef.onrender.com/api/messages/${req.id}`);
          if (res.ok) {
             const data = await res.json();
             const fetchedMessages = Array.isArray(data) ? data : [];
@@ -122,7 +122,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
       if (!userId) return;
 
       try {
-         const res = await fetch('http://localhost:4000/api/messages', {
+         const res = await fetch('https://kind-app-x9ef.onrender.com/api/messages', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -167,7 +167,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
          const token = localStorage.getItem('token');
          if (token) {
             try {
-               const res = await fetch('http://localhost:4000/api/me', {
+               const res = await fetch('https://kind-app-x9ef.onrender.com/api/me', {
                   headers: { Authorization: `Bearer ${token}` }
                });
                if (res.ok) {
@@ -249,7 +249,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
 
       setLoadingRequests(true);
       try {
-         const res = await fetch(`http://localhost:4000/api/contact-requests/provider/${userId}`);
+         const res = await fetch(`https://kind-app-x9ef.onrender.com/api/contact-requests/provider/${userId}`);
          if (res.ok) {
             const data = await res.json();
             const requests = Array.isArray(data) ? data : [];
@@ -310,7 +310,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
          const userId = localStorage.getItem('userId');
          if (userId) {
             try {
-               await fetch(`http://localhost:4000/api/users/${userId}`, {
+               await fetch(`https://kind-app-x9ef.onrender.com/api/users/${userId}`, {
                   method: 'PUT',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
@@ -334,7 +334,7 @@ export const ProviderDashboard: React.FC<ProviderDashboardProps> = ({ providerNa
          if (!userId) throw new Error('User ID not found');
 
          // 1. Update User Basic Info (Name, Service, Location) via API
-         const res = await fetch(`http://localhost:4000/api/users/${userId}`, {
+         const res = await fetch(`https://kind-app-x9ef.onrender.com/api/users/${userId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
